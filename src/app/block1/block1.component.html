@@ -1,0 +1,50 @@
+<clr-tree>
+    <h4>Группировка по полю configStatus</h4>
+    <clr-tree-node [(clrExpanded)]="expanded1">
+        
+        {{expanded1 ? "Убрать Configs c modified" : "Показать Configs c modified"}}
+    
+            <clr-tree-node *ngFor="let config of configs; index as i">
+                <div *ngIf="config.configStatus == 'modified'" class="app_block1_wrap">
+                    <b>Name:</b> {{config.configName}} <b>Date:</b> {{config.date | date: 'medium'}} <b>InstallMethod:</b> {{config.installMethod}}
+                    <div *ngFor="let node of config.nodes">
+                        <span><b> Host:</b> {{node.host}}</span>
+                        <span><b> Status:</b> {{node.status}}</span>
+                        <span><b> Message:</b> {{node.message}}</span>
+                    </div>
+                    <hr />
+                </div>
+            </clr-tree-node>
+    </clr-tree-node>
+    <clr-tree-node [(clrExpanded)]="expanded2">
+        {{expanded2 ? "Убрать Configs c not_changed" : "Показать Configs c not_changed"}}
+    
+            <clr-tree-node *ngFor="let config of configs; index as i">
+                <div *ngIf="config.configStatus == 'not_changed'" class="app_block1_wrap">
+                    <b>Name:</b> {{config.configName}} <b>Date:</b> {{config.date | date: 'medium'}} <b>InstallMethod:</b> {{config.installMethod}}
+                    <div *ngFor="let node of config.nodes">
+                        <span><b> Host:</b> {{node.host}}</span>
+                        <span><b> Status:</b> {{node.status}}</span>
+                        <span><b> Message:</b> {{node.message}}</span>
+                    </div>
+                    <hr />
+                </div>
+            </clr-tree-node>
+    </clr-tree-node>
+    <clr-tree-node [(clrExpanded)]="expanded3">
+        {{expanded3 ? "Убрать Configs c deleted" : "Показать Configs c deleted"}}
+    
+            <clr-tree-node *ngFor="let config of configs; index as i">
+                <div *ngIf="config.configStatus == 'deleted'" class="app_block1_wrap">
+                    <b>Name:</b> {{config.configName}} <b>Date:</b> {{config.date | date: 'medium'}} <b>InstallMethod:</b> {{config.installMethod}}
+                    <div *ngFor="let node of config.nodes">
+                        <span><b> Host:</b> {{node.host}}</span>
+                        <span><b> Status:</b> {{node.status}}</span>
+                        <span><b> Message:</b> {{node.message}}</span>
+                    </div>
+                    <hr />
+                </div>
+            </clr-tree-node>
+    </clr-tree-node>
+
+</clr-tree>
